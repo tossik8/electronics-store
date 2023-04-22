@@ -6,9 +6,9 @@ const Home = () => {
   return (
     <div id="home-page">
       <Navbar/>
-      {/* <video id="background-video" autoPlay muted loop playsInline>
+      <video id="background-video" autoPlay muted loop playsInline>
         <source src="/FinalVideo.mp4"></source>
-      </video> */}
+      </video>
     </div>
   )
 }
