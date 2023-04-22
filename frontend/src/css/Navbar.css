@@ -5,7 +5,8 @@
     justify-content: space-between;
 }
 .search-bar-div{
-    width: 40%;
+    width: 53%;
+    max-width: 40rem;
     position: relative;
     display: flex;
     align-items: center;
@@ -53,7 +54,7 @@
     font-size: 1.5rem;
 }
 header{
-    width: 60%;
+    width: 80%;
     margin: 0 auto;
     text-align: center;
     margin-top: 1rem;
@@ -71,4 +72,13 @@ header{
     color: var(--brand-color);
     margin-top: 4rem;
     font-size: 3rem;
+}
+
+@media screen and (max-width: 425px){
+    header{
+        width: 100%;
+    }
+    .icons{
+        margin-right: 1rem;
+    }
 }
