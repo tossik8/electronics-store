@@ -15,7 +15,7 @@
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    color: var(--nav-color);
+    color: var(--brand-color);
     transition: all 0.2s ease-in-out;
 }
 .button-icon:focus, .button-icon:hover{
@@ -39,7 +39,7 @@
     height: 2rem;
     padding: 0 2rem;
     font-size: 1.1rem;
-    border:var(--nav-color) 1px solid;
+    border:var(--brand-color) 1px solid;
     border-radius: 0.3rem;
 }
 .item-search:focus{
@@ -68,7 +68,7 @@ header{
     transform: scale(110%);
 }
 #title{
-    color: var(--nav-color);
+    color: var(--brand-color);
     margin-top: 4rem;
     font-size: 3rem;
 }
