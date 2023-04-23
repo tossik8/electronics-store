@@ -9,13 +9,13 @@ const Navigation = () => {
   let navigation = useNavigate();
 
   const handleSearch = () => {
-    
+
   }
 
   return (
     <section id="navigation-section">
       <nav className="navigation-panel">
-        <img id="logo" src="/star-tech-logo.png" alt="Logo."/>
+        <img id="logo" src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
         <div className="search-bar-div">
           <button type="button" className="button-icon search" onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
           <input className="item-search" type="text" onChange={e => setInput(e.target.value)} value={input}/>
