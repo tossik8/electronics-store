@@ -6,7 +6,7 @@ import Navbar from '../components/Navigation';
 import Categories from '../components/Categories';
 
 const Home = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState<boolean>(true);
 
   const handleClick = () => {
     const video = document.getElementById("background-video") as HTMLVideoElement;
