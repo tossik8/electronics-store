@@ -1,7 +1,8 @@
 #home-page{
-    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     right: 0;
-    width: 100%;
     min-height: 100vh;
 }
 #background-video{
@@ -29,4 +30,9 @@
 }
 .toggle-sound:hover{
     opacity: 0.7;
+}
+#title{
+    color: var(--brand-color);
+    margin-top: 4rem;
+    font-size: 3rem;
 }
