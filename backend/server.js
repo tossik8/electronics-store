@@ -1,12 +1,14 @@
-import express from "express";
-import cors from "cors";
-import store from "./api/store.route.js";
-
+require("dotenv").config();
+const express = require("express");
 const app = express();
-app.use(cors());
-app.use(express.json());
+const db = require("./db");
 
-app.use("/", store);
-app.use("*", (req, res) => res.status(404).send("Error"));
+const port = process.env.PORT || 3000;
 
-export default app;
+app.get("/api/v1/test", async (req, res) => {
+    console.log(await db.query("SELECT * FROM person", []));
+})
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+})
