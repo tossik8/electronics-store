@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import "../css/Navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate } from 'react-router-dom';
 
 const Navigation = () => {
   const [input, setInput] = useState<string>("");
-  let navigation = useNavigate();
+  let navigation: NavigateFunction = useNavigate();
 
   const handleSearch = () => {
 
