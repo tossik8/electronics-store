@@ -3,6 +3,7 @@ import "../css/Navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { NavigateFunction, useNavigate } from 'react-router-dom';
+import DeviceFinder from '../apis/DeviceFinder';
 
 
 interface NavigationProps{
@@ -14,8 +15,15 @@ const Navigation = ({source, title} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation: NavigateFunction = useNavigate();
 
-  const handleSearch = () => {
-
+  const handleSearch = async () => {
+    if(input.trim() !== ""){
+      try{
+        const response = await DeviceFinder(`/?query=${input}`);
+        console.log(response);
+      } catch (e) {
+        console.error(e);
+      }
+    }
   }
 
   return (
@@ -24,7 +32,7 @@ const Navigation = ({source, title} : NavigationProps) => {
         <img id="logo" src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
         <div className="search-bar-div">
           <button type="button" className="button-icon search" onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-          <input className="item-search" type="text" onChange={e => setInput(e.target.value)} value={input}/>
+          <input className="item-search" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
           <button type="button" className="button-icon delete" onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
         </div>
         <div className="icons">
