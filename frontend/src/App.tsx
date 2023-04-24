@@ -1,11 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
-import { DevicesContextProvider } from "./context/DevicesContext";
 
 function App() {
 
   return (
-    <DevicesContextProvider>
       <div className="App">
         <Router>
           <Routes>
@@ -13,8 +11,6 @@ function App() {
           </Routes>
         </Router>
       </div>
-    </DevicesContextProvider>
-
   )
 }
 

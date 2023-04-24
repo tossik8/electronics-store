@@ -29,7 +29,7 @@
     object-fit: cover;
     z-index: -1;
 }
-.search-bar-div{
+.search-bar-form{
     width: 53%;
     max-width: 40rem;
     position: relative;
@@ -71,6 +71,10 @@
 }
 .item-search:focus{
     outline: none;
+}
+.item-search::placeholder{
+    font-size: 0.9rem;
+    color: rgb(181, 180, 180)
 }
 .icons{
     display: flex;

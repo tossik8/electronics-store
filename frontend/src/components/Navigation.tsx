@@ -19,7 +19,7 @@ const Navigation = ({source, title} : NavigationProps) => {
     if(input.trim() !== ""){
       try{
         const response = await DeviceFinder(`/?query=${input}`);
-        console.log(response);
+        console.log(response.data.data);
       } catch (e) {
         console.error(e);
       }
@@ -30,11 +30,11 @@ const Navigation = ({source, title} : NavigationProps) => {
     <section id="navigation-section">
       <nav className="navigation-panel">
         <img id="logo" src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
-        <div className="search-bar-div">
+        <form onSubmit={e => e.preventDefault()} className="search-bar-form">
           <button type="button" className="button-icon search" onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-          <input className="item-search" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
+          <input className="item-search" placeholder="Item name" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
           <button type="button" className="button-icon delete" onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
-        </div>
+        </form>
         <div className="icons">
           <button type="button" className="button-icon cart"><FontAwesomeIcon icon={faCartShopping} /></button>
           <button type="button" className="button-icon profile"><FontAwesomeIcon icon={faUser} /></button>
