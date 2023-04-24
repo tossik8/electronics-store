@@ -4,7 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 
-const Navigation = () => {
+
+interface NavigationProps{
+  source: string,
+  title?: string
+}
+
+const Navigation = ({source, title} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation: NavigateFunction = useNavigate();
 
@@ -26,9 +32,9 @@ const Navigation = () => {
           <button type="button" className="button-icon profile"><FontAwesomeIcon icon={faUser} /></button>
         </div>
       </nav>
-      <h1 id="title">Star Tech</h1>
+      {title?<h1 id="title">{title}</h1> : null}
       <video id="background-video" autoPlay muted loop playsInline>
-        <source src="/FinalVideo.mp4"></source>
+        <source src={source}></source>
       </video>
     </section>
   )

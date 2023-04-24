@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <main id="home-page">
-      <Navbar/>
+      <Navbar source={"/FinalVideo.mp4"} title={"Star Tech"}/>
       <button id="sound-button" className="toggle-sound" onClick={handleClick}>{isMuted? <FontAwesomeIcon icon={faVolumeUp} />:<FontAwesomeIcon icon={faVolumeXmark}/>}</button>
       <Categories/>
     </main>
