@@ -31,7 +31,15 @@ app.get("/api/v1/electronics-store", async (req, res) => {
     } catch (e) {
         console.error(e);
     }
+});
 
+app.get("/api/v1/electronics-store/:category", async (req, res) => {
+    try{
+        const devices = await db.query("SELECT * FROM device WHERE category_id = (SELECT id FROM category WHERE name = $1)", [req.params.category]);
+        res.json({data: devices.rows});
+    } catch(e) {
+        console.error(e)
+    }
 })
 
 app.listen(port, () => {
