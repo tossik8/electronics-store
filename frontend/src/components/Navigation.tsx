@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "../css/Navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DeviceFinder from '../apis/DeviceFinder';
+import { DevicesContext, DevicesContextType } from '../context/DevicesContext';
 
 
 interface NavigationProps{
@@ -13,7 +14,9 @@ interface NavigationProps{
 
 const Navigation = ({source, title} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
-  let navigation: NavigateFunction = useNavigate();
+  let navigation = useNavigate();
+
+  const context = useContext(DevicesContext);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries, observer) => {
@@ -36,7 +39,9 @@ const Navigation = ({source, title} : NavigationProps) => {
     if(input.trim() !== ""){
       try{
         const response = await DeviceFinder(`/?query=${input}`);
-        console.log(response.data.data);
+        if(context !== null){
+          context.setDevices(response.data.data);
+        }
       } catch (e) {
         console.error(e);
       }
