@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "../css/Navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
@@ -14,6 +14,23 @@ interface NavigationProps{
 const Navigation = ({source, title} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation: NavigateFunction = useNavigate();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.target.id === "background-video"){
+          const video = entry.target as HTMLVideoElement;
+          if(entry.isIntersecting){
+            video.play();
+          }
+          else{
+            video.pause();
+          }
+        }
+      })
+    }, { root: null, rootMargin: "0px", threshold: 0.8 });
+    observer.observe(document.getElementById("background-video") as HTMLVideoElement);
+  }, []);
 
   const handleSearch = async () => {
     if(input.trim() !== ""){
@@ -41,9 +58,9 @@ const Navigation = ({source, title} : NavigationProps) => {
         </div>
       </nav>
       {title?<h1 id="title">{title}</h1> : null}
-      {/* <video id="background-video" autoPlay muted loop playsInline>
+      <video id="background-video" autoPlay muted loop>
         <source src={source}></source>
-      </video> */}
+      </video>
     </section>
   )
 }
