@@ -41,9 +41,9 @@ const Navigation = ({source, title} : NavigationProps) => {
         </div>
       </nav>
       {title?<h1 id="title">{title}</h1> : null}
-      <video id="background-video" autoPlay muted loop playsInline>
+      {/* <video id="background-video" autoPlay muted loop playsInline>
         <source src={source}></source>
-      </video>
+      </video> */}
     </section>
   )
 }
