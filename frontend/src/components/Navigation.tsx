@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom';
 import DeviceFinder from '../apis/DeviceFinder';
-import { DevicesContext, DevicesContextType } from '../context/DevicesContext';
+import { DevicesContext } from '../context/DevicesContext';
 
 
 interface NavigationProps{
