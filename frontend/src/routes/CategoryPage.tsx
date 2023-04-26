@@ -28,7 +28,7 @@ const CategoryPage = () => {
         <SoundButton/>
         <section id="devices">
             {context? context.devices.map(device => (
-                <Device key={device.id} title={device.name + " " + device.model} url={device.url}/>
+                <Device key={device.id} title={device.name + " " + device.model} url={device.url} price={device.price}/>
             )): "No devices"}
         </section>
     </main>

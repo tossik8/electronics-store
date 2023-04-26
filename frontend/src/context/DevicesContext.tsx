@@ -6,6 +6,7 @@ export interface IDevice{
   model: string,
   description: string,
   url: string,
+  price: string,
   category_id: number
 }
 
