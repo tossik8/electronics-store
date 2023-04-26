@@ -1,5 +1,6 @@
 :root{
   --brand-color: rgb(0, 147, 251);
+  --background-color: #afd9d5;
 }
 *{
   padding: 0;
