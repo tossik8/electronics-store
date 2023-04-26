@@ -4,12 +4,20 @@ import Navigation from '../components/Navigation';
 import SoundButton from '../components/SoundButton';
 import { DevicesContext } from '../context/DevicesContext';
 import DevicesList from '../components/DevicesList';
+import DeviceFinder from '../apis/DeviceFinder';
 
 const CategoryPage = () => {
     const { category } = useParams();
     const context = useContext(DevicesContext);
     useEffect(() => {
         window.scrollTo(0, 0);
+        async function fetchData() {
+            const devices = await DeviceFinder(`/${category}`);
+            if(context){
+                context.setDevices(devices.data.data);
+            }
+        }
+        fetchData();
     }, [])
     let source = "";
     if(category === "Phones"){

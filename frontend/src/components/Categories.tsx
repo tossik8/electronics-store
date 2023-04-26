@@ -1,24 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import "../css/Categories.css"
-import DeviceFinder from '../apis/DeviceFinder'
-import { DevicesContext } from '../context/DevicesContext'
 import { useNavigate } from 'react-router-dom'
 
 const Categories = () => {
 
-  const context = useContext(DevicesContext);
   let navigation = useNavigate();
 
-  const handleClick = async (category: string) => {
-    try{
-      const response = await DeviceFinder(`/${category}`);
-      if(context !== null){
-        context.setDevices(response.data.data);
-        navigation(`/${category}`);
-      }
-    } catch(e) {
-      console.error(e);
-    }
+  const handleClick = (category: string) => {
+    navigation(`/${category}`);
   }
 
   return (
