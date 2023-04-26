@@ -1,14 +1,16 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Navigation from '../components/Navigation';
 import SoundButton from '../components/SoundButton';
 import { DevicesContext } from '../context/DevicesContext';
-import Device from '../components/Device';
-import "../css/CategoryPage.css"
+import DevicesList from '../components/DevicesList';
 
 const CategoryPage = () => {
     const { category } = useParams();
     const context = useContext(DevicesContext);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [])
     let source = "";
     if(category === "Phones"){
         source = "/PhonesPage.mp4"
@@ -26,11 +28,7 @@ const CategoryPage = () => {
     <main>
         <Navigation source={source}/>
         <SoundButton/>
-        <section id="devices">
-            {context? context.devices.map(device => (
-                <Device key={device.id} title={device.name + " " + device.model} url={device.url} price={device.price}/>
-            )): "No devices"}
-        </section>
+        <DevicesList title={category} context={context}/>
     </main>
   )
 }
