@@ -25,8 +25,12 @@ app.get("/api/v1/electronics-store", async (req, res) => {
         if(devices.rowCount === 0 || Object.keys(devices).length === 0){
             devices = await db.query("SELECT * FROM device WHERE name || ' ' || model ILIKE $1 OR model ILIKE $1 OR name ILIKE $1", keywords);
         }
-        res.json({
-            data: devices.rows
+        getPrice(devices).then(devices => {
+            res.json({
+                data: devices
+            })
+        }).catch(e => {
+            console.error(e);
         });
     } catch (e) {
         console.error(e);
@@ -35,12 +39,27 @@ app.get("/api/v1/electronics-store", async (req, res) => {
 
 app.get("/api/v1/electronics-store/:category", async (req, res) => {
     try{
-        const devices = await db.query("SELECT * FROM device WHERE category_id = (SELECT id FROM category WHERE name = $1)", [req.params.category]);
-        res.json({data: devices.rows});
+        let devices = await db.query("SELECT * FROM device WHERE category_id = (SELECT id FROM category WHERE name = $1)", [req.params.category]);
+        getPrice(devices).then(devices => {
+            res.json({
+                data: devices
+            })
+        }).catch(e => {
+            console.error(e);
+        });
+
     } catch(e) {
         console.error(e)
     }
 })
+
+function getPrice(devices){
+    return Promise.all(devices.rows.map(async device => {
+        const price = await db.query("SELECT price FROM price WHERE id = (SELECT price_id FROM pricehistory WHERE device_id = $1 AND date = (SELECT MAX(date) FROM pricehistory WHERE device_id = $1))", [device.id]);
+        device.price = price.rows[0].price;
+        return device;
+    }));
+}
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
