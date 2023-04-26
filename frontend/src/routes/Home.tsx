@@ -1,23 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import "../css/Home.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolumeXmark, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
-import Navbar from '../components/Navigation';
 import Categories from '../components/Categories';
+import SoundButton from '../components/SoundButton';
+import Navigation from '../components/Navigation';
 
 const Home = () => {
-  const [isMuted, setIsMuted] = useState<boolean>(true);
-
-  const handleClick = () => {
-    const video = document.getElementById("background-video") as HTMLVideoElement;
-    video!.muted = !video?.muted
-    setIsMuted(!isMuted);
-  }
 
   return (
     <main id="home-page">
-      <Navbar source={"/FinalVideo.mp4"} title={"Star Tech"}/>
-      <button id="sound-button" className="toggle-sound" onClick={handleClick}>{isMuted? <FontAwesomeIcon icon={faVolumeUp} />:<FontAwesomeIcon icon={faVolumeXmark}/>}</button>
+      <Navigation source={"/FinalVideo.mp4"} title={"Star Tech"}/>
+      <SoundButton/>
       <Categories/>
     </main>
   )
