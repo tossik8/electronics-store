@@ -8,7 +8,7 @@ import { DevicesContext } from '../context/DevicesContext';
 
 
 interface NavigationProps{
-  source: string,
+  source?: string,
   title?: string
 }
 
@@ -32,7 +32,9 @@ const Navigation = ({source, title} : NavigationProps) => {
         }
       })
     }, { root: null, rootMargin: "0px", threshold: 0.8 });
-    observer.observe(document.getElementById("background-video") as HTMLVideoElement);
+    if(document.getElementById("background-video")){
+      observer.observe(document.getElementById("background-video") as HTMLVideoElement);
+    }
   }, []);
 
   const handleSearch = async () => {
@@ -49,7 +51,7 @@ const Navigation = ({source, title} : NavigationProps) => {
   }
 
   return (
-    <section id="navigation-section">
+    <header id="navigation-section">
       <nav className="navigation-panel">
         <img id="logo" src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
         <form onSubmit={e => e.preventDefault()} className="search-bar-form">
@@ -63,8 +65,8 @@ const Navigation = ({source, title} : NavigationProps) => {
         </div>
       </nav>
       {title?<h1 id="title">{title}</h1> : null}
-      <video id="background-video" muted loop src={source}></video>
-    </section>
+      {source? <video id="background-video" muted loop src={source}></video> : null}
+    </header>
   )
 }
 

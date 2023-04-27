@@ -33,11 +33,11 @@ const CategoryPage = () => {
         source = "/HeadphonesPage.mp4"
     }
   return (
-    <main>
+    <>
         <Navigation source={source}/>
         <SoundButton/>
         <DevicesList title={category} context={context}/>
-    </main>
+    </>
   )
 }
 

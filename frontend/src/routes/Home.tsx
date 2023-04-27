@@ -7,11 +7,11 @@ import Navigation from '../components/Navigation';
 const Home = () => {
 
   return (
-    <main id="home-page">
+    <div id="home-page">
       <Navigation source={"/FinalVideo.mp4"} title={"Star Tech"}/>
       <SoundButton/>
       <Categories/>
-    </main>
+    </div>
   )
 }
 

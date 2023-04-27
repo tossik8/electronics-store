@@ -11,7 +11,7 @@ const Categories = () => {
   }
 
   return (
-    <section id="categories-section">
+    <main id="categories-section">
       <h2 className="categories-heading">Shop by category</h2>
       <div className="categories-div">
         <article className="category-article" onClick={() => handleClick("Phones")}>
@@ -35,7 +35,7 @@ const Categories = () => {
           <p className="description">The sound quality you have never heard before</p>
         </article>
       </div>
-    </section>
+    </main>
   )
 }
 

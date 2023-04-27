@@ -7,14 +7,14 @@ function App() {
 
   return (
     <DevicesContextProvider>
-      <div className="App">
+      <>
         <Router>
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/:category" element={<CategoryPage />}/>
           </Routes>
         </Router>
-      </div>
+      </>
     </DevicesContextProvider>
 
   )
