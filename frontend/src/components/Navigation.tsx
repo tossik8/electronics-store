@@ -42,6 +42,7 @@ const Navigation = ({source, title} : NavigationProps) => {
       if(location.pathname.includes("/search/")){
         fetchData();
       }
+      setInput("");
       navigation(`/search/${input}`);
     }
   }
