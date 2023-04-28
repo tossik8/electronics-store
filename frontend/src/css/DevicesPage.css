@@ -3,4 +3,5 @@
 }
 .adjusted-height{
     height: 100% !important;
+    min-height: auto !important;
 }
