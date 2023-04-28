@@ -36,7 +36,7 @@ const CategoryPage = () => {
     <>
         <Navigation source={source}/>
         <SoundButton/>
-        <DevicesList title={category} context={context}/>
+        <DevicesList title={category}/>
     </>
   )
 }

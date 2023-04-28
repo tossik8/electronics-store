@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "../css/Navigation.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DeviceFinder from '../apis/DeviceFinder';
 import { DevicesContext } from '../context/DevicesContext';
 
@@ -15,7 +15,7 @@ interface NavigationProps{
 const Navigation = ({source, title} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation = useNavigate();
-
+  let location = useLocation();
   const context = useContext(DevicesContext);
 
   useEffect(() => {
@@ -39,14 +39,21 @@ const Navigation = ({source, title} : NavigationProps) => {
 
   const handleSearch = async () => {
     if(input.trim() !== ""){
-      try{
-        const response = await DeviceFinder(`/?query=${input}`);
-        if(context !== null){
-          context.setDevices(response.data.data);
-        }
-      } catch (e) {
-        console.error(e);
+      if(location.pathname.includes("/search/")){
+        fetchData();
       }
+      navigation(`/search/${input}`);
+    }
+  }
+
+  async function fetchData(){
+    try{
+      const response = await DeviceFinder(`/?query=${input}`);
+      if(context){
+        context.setDevices(response.data.data);
+      }
+    } catch(e){
+      console.error(e);
     }
   }
 

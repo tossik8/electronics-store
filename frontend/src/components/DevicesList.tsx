@@ -1,14 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Device from './Device'
-import { DevicesContextType } from '../context/DevicesContext'
+import { DevicesContext } from '../context/DevicesContext'
 import "../css/DevicesList.css"
 
 interface DevicesListProps{
     title: string | undefined,
-    context: DevicesContextType | null
 }
 
-const DevicesList = ({title, context} : DevicesListProps) => {
+const DevicesList = ({title} : DevicesListProps) => {
+  const context = useContext(DevicesContext);
   return (
     <main id="devices">
         <h1 id="category-title">{title}</h1>

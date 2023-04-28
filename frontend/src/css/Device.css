@@ -4,7 +4,7 @@
     border-radius: 0 3rem;
     max-width: 12rem;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 .device-article:hover{
     box-shadow: 10px 5px 10px #94b6c5;
