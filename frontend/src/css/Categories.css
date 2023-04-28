@@ -1,5 +1,6 @@
 #categories-section{
     width: 100%;
+    min-height: 100vh;
     height: 100%;
     background-color: var(--background-color);
     display: flex;
@@ -16,7 +17,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
-    margin: 0 1rem 25rem;
+    margin: 0 1rem 3rem;
 }
 .category-article{
     background-color: white;
@@ -47,9 +48,4 @@
     word-break: break-all;
     margin: 0 auto;
     width: 85%;
-}
-@media screen and (max-width: 1105px){
-    .categories-div{
-        margin: 0 1rem 3rem;
-    }
 }
