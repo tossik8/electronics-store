@@ -16,7 +16,7 @@ const Navigation = ({source, title} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation = useNavigate();
   let location = useLocation();
-  const context = useContext(DevicesContext);
+  const { setDevices } = useContext(DevicesContext);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries, observer) => {
@@ -37,7 +37,7 @@ const Navigation = ({source, title} : NavigationProps) => {
     }
   }, []);
 
-  const handleSearch = async () => {
+  const handleSearch = () => {
     if(input.trim() !== ""){
       if(location.pathname.includes("/search/")){
         fetchData();
@@ -50,9 +50,7 @@ const Navigation = ({source, title} : NavigationProps) => {
   async function fetchData(){
     try{
       const response = await DeviceFinder(`/?query=${input}`);
-      if(context){
-        context.setDevices(response.data.data);
-      }
+      setDevices(response.data.data);
     } catch(e){
       console.error(e);
     }

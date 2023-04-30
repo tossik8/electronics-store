@@ -9,13 +9,16 @@ import DeviceFinder from '../apis/DeviceFinder';
 const CategoryPage = () => {
     window.scrollTo(0, 0);
     const { category } = useParams();
-    const context = useContext(DevicesContext);
+    const { setDevices } = useContext(DevicesContext);
     useEffect(() => {
         async function fetchData() {
-            const devices = await DeviceFinder(`/${category}`);
-            if(context){
-                context.setDevices(devices.data.data);
+            try{
+                const devices = await DeviceFinder(`/${category}`);
+                setDevices(devices.data.data);
+            } catch(e){
+                console.error(e);
             }
+
         }
         fetchData();
     }, [])

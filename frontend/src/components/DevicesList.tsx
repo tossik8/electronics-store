@@ -8,14 +8,14 @@ interface DevicesListProps{
 }
 
 const DevicesList = ({title} : DevicesListProps) => {
-  const context = useContext(DevicesContext);
+  const { devices } = useContext(DevicesContext);
   return (
     <main id="devices">
         <h1 id="category-title">{title}</h1>
         <div className="devices-wrapper">
-            {context? context.devices.map(device => (
+            {devices.map(device => (
                 <Device key={device.id} title={device.name + " " + device.model} url={device.url} price={device.price}/>
-            )): "No devices"}
+            ))}
         </div>
     </main>
   )

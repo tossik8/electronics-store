@@ -9,14 +9,12 @@ import "../css/DevicesPage.css"
 const DevicesPage = () => {
     window.scrollTo(0, 0);
     const {name} = useParams();
-    const context = useContext(DevicesContext);
+    const { setDevices } = useContext(DevicesContext);
     useEffect(() => {
         async function fetchData() {
             try{
                 const response = await DeviceFinder(`/?query=${name}`);
-                if(context !== null){
-                    context.setDevices(response.data.data);
-                }
+                setDevices(response.data.data);
             } catch (e) {
             console.error(e);
             }
