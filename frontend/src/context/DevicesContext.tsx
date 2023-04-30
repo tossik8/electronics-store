@@ -21,7 +21,7 @@ interface DevicesContextProviderProps{
   children: ReactNode
 }
 
-export const DevicesContext = createContext<DevicesContextType | null>(null);
+export const DevicesContext = createContext<DevicesContextType>(null!);
 
 export const DevicesContextProvider = ({children} : DevicesContextProviderProps) => {
   const [devices, setDevices] = useState<IDevice[]>([])
