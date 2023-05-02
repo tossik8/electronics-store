@@ -14,7 +14,7 @@ const DevicesList = ({title} : DevicesListProps) => {
         <h1 id="category-title">{title}</h1>
         <div className="devices-wrapper">
             {devices.map(device => (
-                <Device key={device.id} title={device.name + " " + device.model} url={device.url} price={device.price}/>
+                <Device key={device.id} id={device.id} name={device.name} model={device.model} url={device.url} price={device.price} description={device.description} category_id={device.category_id}/>
             ))}
         </div>
     </main>
