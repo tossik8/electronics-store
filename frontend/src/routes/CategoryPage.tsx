@@ -7,7 +7,6 @@ import DevicesList from '../components/DevicesList';
 import DeviceFinder from '../apis/DeviceFinder';
 
 const CategoryPage = () => {
-    window.scrollTo(0, 0);
     const { category } = useParams();
     const { setDevices } = useContext(DevicesContext);
     useEffect(() => {
