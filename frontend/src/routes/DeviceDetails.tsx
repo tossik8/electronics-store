@@ -19,12 +19,11 @@ const DeviceDetails = () => {
             }
         }
         fetchData();
-        document.getElementById("navigation-section")?.classList.add("adjusted-height")
     }, [])
   return (
     <>{
         selectedDevice ? <>
-            <Navigation/>
+            <Navigation height={true}/>
                 <main id="device-main">
                     <div className="panel">
                         <div id="device-details">

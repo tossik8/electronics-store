@@ -9,10 +9,11 @@ import { DevicesContext } from '../context/DevicesContext';
 
 interface NavigationProps{
   source?: string,
-  title?: string
+  title?: string,
+  height?: boolean
 }
 
-const Navigation = ({source, title} : NavigationProps) => {
+const Navigation = ({source, title, height} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation = useNavigate();
   let location = useLocation();
@@ -34,6 +35,9 @@ const Navigation = ({source, title} : NavigationProps) => {
     }, { root: null, rootMargin: "0px", threshold: 0.8 });
     if(document.getElementById("background-video")){
       observer.observe(document.getElementById("background-video") as HTMLVideoElement);
+    }
+    if(height){
+        document.getElementById("navigation-section")?.classList.add("adjusted-height");
     }
   }, []);
 

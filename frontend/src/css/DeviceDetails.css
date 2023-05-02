@@ -21,7 +21,7 @@
 }
 #price{
     font-size: 2rem;
-    color: #aeff46;
+    color: #fdff46;
     margin: 1rem 0;
 }
 .cart-button{
@@ -37,7 +37,6 @@
 #device-image{
     width: 38rem;
 }
-
 @media screen and (max-width: 1100px) {
     #device-image{
         width: 35rem;

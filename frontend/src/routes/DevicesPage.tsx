@@ -20,12 +20,11 @@ const DevicesPage = () => {
             }
         }
         fetchData();
-        document.getElementById("navigation-section")?.classList.add("adjusted-height");
     }, [])
   return (
     <>
         <div id="navigation-wrapper">
-            <Navigation/>
+            <Navigation height={true}/>
         </div>
         <DevicesList title={`Results for ${name}`}/>
     </>
