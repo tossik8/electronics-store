@@ -3,6 +3,7 @@ import Home from "./routes/Home";
 import { DevicesContextProvider } from "./context/DevicesContext";
 import CategoryPage from "./routes/CategoryPage";
 import DevicesPage from "./routes/DevicesPage";
+import DeviceDetails from "./routes/DeviceDetails";
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path="/search/:name" element={<DevicesPage/>}/>
             <Route path="/:category" element={<CategoryPage />}/>
+            <Route path="/item/:name" element={<DeviceDetails/>}/>
           </Routes>
         </Router>
       </>
