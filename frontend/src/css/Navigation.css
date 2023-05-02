@@ -1,3 +1,7 @@
+.adjusted-height{
+    height: 0% !important;
+    min-height: auto !important;
+}
 .navigation-panel{
     margin-top: 1rem;
     position: fixed;
