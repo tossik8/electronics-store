@@ -53,6 +53,21 @@ app.get("/api/v1/electronics-store/:category", async (req, res) => {
     }
 })
 
+app.get("/api/v1/electronics-store/device/:name", async (req, res) => {
+    try{
+        let device = await db.query("SELECT * FROM device WHERE name || ' ' || model = $1", [req.params.name]);
+        getPrice(device).then(device => {
+            res.json({
+                data: device
+            })
+        }).catch(e => {
+            console.error(e);
+        });
+    } catch (e) {
+        console.error(e);
+    }
+})
+
 function getPrice(devices){
     return Promise.all(devices.rows.map(async device => {
         const price = await db.query("SELECT price FROM price WHERE id = (SELECT price_id FROM pricehistory WHERE device_id = $1 AND date = (SELECT MAX(date) FROM pricehistory WHERE device_id = $1))", [device.id]);
