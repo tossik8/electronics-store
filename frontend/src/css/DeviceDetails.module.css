@@ -12,9 +12,6 @@
     width: 95%;
     margin-top: 8rem;
 }
-#device_details{
-    width: 30rem;
-}
 #device_title{
     font-size: 4rem;
     font-weight: 500;
@@ -38,23 +35,23 @@
     width: 38rem;
 }
 @media screen and (max-width: 1100px) {
+
     #device_image{
         width: 35rem;
     }
-}
-@media screen and (max-width: 1100px) {
-    #device_image{
-        width: 30rem;
-    }
-}
-
-@media  screen and (max-width: 1100px) {
     #device_title{
         font-size: 2rem;
     }
 }
 
-@media screen and (max-width: 740px){
+@media screen and (max-width: 750px){
+    #device_main{
+        height: 100%;
+        align-items: center;
+    }
+    #device_image, #device_details{
+        width: 30rem;
+    }
     .panel{
         flex-direction: column-reverse;
         margin-bottom: 2rem;
