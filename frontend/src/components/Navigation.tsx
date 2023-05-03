@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import "../css/Navigation.css";
+import styles from "../css/Navigation.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faXmark } from "@fortawesome/free-solid-svg-icons"
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -22,7 +22,7 @@ const Navigation = ({source, title, height} : NavigationProps) => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
-        if(entry.target.id === "background-video"){
+        if(entry.target.id === styles.background_video){
           const video = entry.target as HTMLVideoElement;
           if(entry.isIntersecting){
             video.play();
@@ -33,11 +33,11 @@ const Navigation = ({source, title, height} : NavigationProps) => {
         }
       })
     }, { root: null, rootMargin: "0px", threshold: 0.8 });
-    if(document.getElementById("background-video")){
-      observer.observe(document.getElementById("background-video") as HTMLVideoElement);
+    if(document.getElementById(styles.background_video)){
+      observer.observe(document.getElementById(styles.background_video) as HTMLVideoElement);
     }
     if(height){
-        document.getElementById("navigation-section")?.classList.add("adjusted-height");
+        document.getElementById(styles.navigation_section)?.classList.add(styles.adjusted_height);
     }
   }, []);
 
@@ -61,21 +61,21 @@ const Navigation = ({source, title, height} : NavigationProps) => {
   }
 
   return (
-    <header id="navigation-section">
-      <nav className="navigation-panel">
-        <img id="logo" src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
-        <form onSubmit={e => e.preventDefault()} className="search-bar-form">
-          <button type="button" className="button-icon search" onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-          <input className="item-search" placeholder="Item name" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
-          <button type="button" className="button-icon delete" onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
+    <header id={styles.navigation_section}>
+      <nav className={styles.navigation_panel}>
+        <img id={styles.logo} src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
+        <form onSubmit={e => e.preventDefault()} className={styles.search_bar_form}>
+          <button type="button" className={`${styles.button_icon} ${styles.search}`} onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+          <input className={styles.item_search} placeholder="Item name" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
+          <button type="button" className={`${styles.button_icon} ${styles.delete}`} onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
         </form>
-        <div className="icons">
-          <button type="button" className="button-icon cart"><FontAwesomeIcon icon={faCartShopping} /></button>
-          <button type="button" className="button-icon profile"><FontAwesomeIcon icon={faUser} /></button>
+        <div className={styles.icons}>
+          <button type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping} /></button>
+          <button type="button" className={`${styles.button_icon} ${styles.profile}`}><FontAwesomeIcon icon={faUser} /></button>
         </div>
       </nav>
-      {title?<h1 id="title">{title}</h1> : null}
-      {source? <video id="background-video" muted loop src={source}></video> : null}
+      {title?<h1 id={styles.title}>{title}</h1> : null}
+      {source? <video id={styles.background_video} muted loop src={source}></video> : null}
     </header>
   )
 }
