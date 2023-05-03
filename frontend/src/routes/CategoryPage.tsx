@@ -17,7 +17,6 @@ const CategoryPage = () => {
             } catch(e){
                 console.error(e);
             }
-
         }
         fetchData();
     }, [])

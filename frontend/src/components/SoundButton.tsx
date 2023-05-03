@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faVolumeXmark, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
-import "../css/SoundButton.css"
+import styles from  "../css/SoundButton.module.css"
 
 const SoundButton = () => {
 
@@ -13,7 +13,7 @@ const SoundButton = () => {
         setIsMuted(!isMuted);
     }
   return (
-    <button id="sound-button" className="toggle-sound" onClick={handleClick}>{isMuted? <FontAwesomeIcon icon={faVolumeUp} />:<FontAwesomeIcon icon={faVolumeXmark}/>}</button>
+    <button id="sound-button" className={styles.toggle_sound} onClick={handleClick}>{isMuted? <FontAwesomeIcon icon={faVolumeUp} />:<FontAwesomeIcon icon={faVolumeXmark}/>}</button>
   )
 }
 
