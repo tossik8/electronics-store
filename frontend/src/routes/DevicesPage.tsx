@@ -4,7 +4,7 @@ import DevicesList from '../components/DevicesList';
 import { DevicesContext } from '../context/DevicesContext';
 import DeviceFinder from '../apis/DeviceFinder';
 import Navigation from '../components/Navigation';
-import "../css/DevicesPage.css"
+import styles from "../css/DevicesPage.module.css"
 
 const DevicesPage = () => {
     window.scrollTo(0, 0);
@@ -23,7 +23,7 @@ const DevicesPage = () => {
     }, [])
   return (
     <>
-        <div id="navigation-wrapper">
+        <div id={styles.navigation_wrapper}>
             <Navigation height={true}/>
         </div>
         <DevicesList title={`Results for ${name}`}/>
