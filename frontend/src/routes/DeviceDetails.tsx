@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import Navigation from '../components/Navigation'
 import { useParams } from 'react-router-dom'
-import "../css/DeviceDetails.css"
+import styles from "../css/DeviceDetails.module.css"
 import { DevicesContext } from '../context/DevicesContext'
 import DeviceFinder from '../apis/DeviceFinder'
 
@@ -24,16 +24,15 @@ const DeviceDetails = () => {
     <>{
         selectedDevice ? <>
             <Navigation height={true}/>
-                <main id="device-main">
-                    <div className="panel">
-                        <div id="device-details">
-                            <h1 id="device-title">{name}</h1>
-                            <p id="description">{selectedDevice.description}</p>
-                            <p id="price">{selectedDevice.price}€</p>
-                            <button className="cart-button">Add to cart</button>
+                <main id={styles.device_main}>
+                    <div className={styles.panel}>
+                        <div id={styles.device_details}>
+                            <h1 id={styles.device_title}>{name}</h1>
+                            <p id={styles.description}>{selectedDevice.description}</p>
+                            <p id={styles.price}>{selectedDevice.price}€</p>
+                            <button className={styles.cart_button}>Add to cart</button>
                         </div>
-                        <img id="device-image" src={selectedDevice.url} alt="Device image."/>
-
+                        <img id={styles.device_image} src={selectedDevice.url} alt="Device image."/>
                     </div>
                 </main>
         </> : null

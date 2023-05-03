@@ -1,6 +1,7 @@
-#device-main{
+#device_main{
     width: 100%;
     max-width: 100rem;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
 }
@@ -10,12 +11,11 @@
     align-items: center;
     gap: 2rem;
     width: 95%;
-    margin-top: 8rem;
 }
-#device-details{
+#device_details{
     width: 30rem;
 }
-#device-title{
+#device_title{
     font-size: 4rem;
     font-weight: 500;
 }
@@ -24,7 +24,7 @@
     color: #fdff46;
     margin: 1rem 0;
 }
-.cart-button{
+.cart_button{
     width: 9.5rem;
     padding: 0.8rem 1rem;
     background-color: white;
@@ -34,27 +34,27 @@
     border-radius: 2rem;
     cursor: pointer;
 }
-#device-image{
+#device_image{
     width: 38rem;
 }
 @media screen and (max-width: 1100px) {
-    #device-image{
+    #device_image{
         width: 35rem;
     }
 }
 @media screen and (max-width: 1100px) {
-    #device-image{
+    #device_image{
         width: 30rem;
     }
 }
 
 @media  screen and (max-width: 1100px) {
-    #device-title{
+    #device_title{
         font-size: 3rem;
     }
 }
 @media  screen and (max-width: 1100px) {
-    #device-title{
+    #device_title{
         font-size: 2rem;
     }
     #description{
@@ -69,17 +69,17 @@
     }
 }
 @media screen and (max-width: 600px){
-    #device-image, #device-details{
+    #device_image, #device_details{
         width: 25rem;
     }
 }
 @media screen and (max-width: 410px){
-    #device-image, #device-details{
+    #device_image, #device_details{
         width: 20rem;
     }
 }
 @media screen and (max-width: 330px){
-    #device-image, #device-details{
+    #device_image, #device_details{
         width: 15rem;
     }
 }
