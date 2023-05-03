@@ -70,7 +70,7 @@ const Navigation = ({source, title, height} : NavigationProps) => {
           <button type="button" className={`${styles.button_icon} ${styles.delete}`} onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
         </form>
         <div className={styles.icons}>
-          <button type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping} /></button>
+          <button type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping}/></button>
           <button type="button" className={`${styles.button_icon} ${styles.profile}`}><FontAwesomeIcon icon={faUser} /></button>
         </div>
       </nav>

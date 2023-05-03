@@ -1,7 +1,6 @@
 #device_main{
     width: 100%;
     max-width: 100rem;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
 }
@@ -11,6 +10,7 @@
     align-items: center;
     gap: 2rem;
     width: 95%;
+    margin-top: 8rem;
 }
 #device_details{
     width: 30rem;
@@ -50,15 +50,7 @@
 
 @media  screen and (max-width: 1100px) {
     #device_title{
-        font-size: 3rem;
-    }
-}
-@media  screen and (max-width: 1100px) {
-    #device_title{
         font-size: 2rem;
-    }
-    #description{
-        font-size: 0.8rem;
     }
 }
 
@@ -66,6 +58,9 @@
     .panel{
         flex-direction: column-reverse;
         margin-bottom: 2rem;
+    }
+    #description{
+        font-size: 0.8rem;
     }
 }
 @media screen and (max-width: 600px){
