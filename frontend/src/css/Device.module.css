@@ -1,4 +1,4 @@
-.device-article{
+.device_article{
     background-color: white;
     padding: 1rem;
     border-radius: 0 3rem;
@@ -6,22 +6,22 @@
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
-.device-article:hover{
+.device_article:hover{
     box-shadow: 10px 5px 10px #94b6c5;
 }
-.device-image{
+.device_image{
     display: block;
     margin: 0 auto;
     width: 10rem;
     height: 7rem;
 }
-.device-title{
+.device_title{
     font-size: 0.85rem;
     font-weight: 400;
     color: #191919;
     width: 90%;
 }
-.price-div{
+.price_div{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,4 +30,20 @@
     font-size: 1.3rem;
     font-weight: 700;
     color: #a5d861;
+}
+.button_icon{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--brand-color);
+    transition: all 0.2s ease-in-out;
+}
+.button_icon:focus, .button_icon:hover{
+    outline: none;
+    filter: brightness(140%);
+    transform: scale(105%);
+}
+.cart{
+    font-size: 1.5rem;
 }
