@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from 'react'
+import React, { ReactNode, createContext, useEffect, useState } from 'react'
 
 export interface IDevice{
   id: number,
@@ -29,6 +29,12 @@ export const DevicesContextProvider = ({children} : DevicesContextProviderProps)
   const [devices, setDevices] = useState<IDevice[]>([]);
   const [selectedDevice, setSelectedDevice] = useState<IDevice>(null!);
   const [cart, setCart] = useState<IDevice[]>([]);
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if(storedCart){
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
 
   return (
     <DevicesContext.Provider value={{devices, setDevices, selectedDevice, setSelectedDevice, cart, setCart}}>
