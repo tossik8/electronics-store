@@ -1,0 +1,41 @@
+.quantity_div{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.quantity_input{
+    border: none;
+    outline: none;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 5rem;
+    max-width: min-content;
+    height: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    min-height: 3.14rem;
+}
+.quantity_button{
+    position: absolute;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.2rem;
+    color:rgb(101, 101, 49);
+    cursor: pointer;
+}
+.quantity_button:focus-visible{
+    outline: auto;
+}
+.left:active{
+    color:rgb(206, 100, 71)
+}
+.right:active{
+    color: rgb(71, 206, 116);
+}
+.left{
+    left: 3%;
+}
+.right{
+    right: 3%;
+}

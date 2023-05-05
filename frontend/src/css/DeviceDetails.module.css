@@ -21,6 +21,12 @@
     color: #fdff46;
     margin: 1rem 0;
 }
+.controls_div{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
 .cart_button{
     width: 9.5rem;
     padding: 0.8rem 1rem;

@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navigation from '../components/Navigation'
 import { useParams } from 'react-router-dom'
 import styles from "../css/DeviceDetails.module.css"
 import { DevicesContext } from '../context/DevicesContext'
 import DeviceFinder from '../apis/DeviceFinder'
+import QuantityInput from '../components/QuantityInput'
 
 const DeviceDetails = () => {
     const { name } = useParams();
@@ -30,7 +31,10 @@ const DeviceDetails = () => {
                             <h1 id={styles.device_title}>{name}</h1>
                             <p id={styles.description}>{selectedDevice.description}</p>
                             <p id={styles.price}>{selectedDevice.price}€</p>
-                            <button className={styles.cart_button}>Add to cart</button>
+                            <div className={styles.controls_div}>
+                                <button className={styles.cart_button}>Add to cart</button>
+                                <QuantityInput/>
+                            </div>
                         </div>
                         <img id={styles.device_image} src={selectedDevice.url} alt="Device image."/>
                     </div>
