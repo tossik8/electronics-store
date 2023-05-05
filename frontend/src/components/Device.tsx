@@ -17,7 +17,7 @@ interface DeviceProps{
 
 const Device = ({id, name, category_id , model, description, url, price} : DeviceProps) => {
   const navigate = useNavigate();
-  const { setSelectedDevice } = useContext(DevicesContext);
+  const { setSelectedDevice, setCart, cart } = useContext(DevicesContext);
   const handleClick = () => {
     setSelectedDevice({
       id,
@@ -30,13 +30,19 @@ const Device = ({id, name, category_id , model, description, url, price} : Devic
     });
     navigate(`/item/${name} ${model}`);
   }
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.stopPropagation();
+    const newCart = [...cart, {id, name, model, description, url, price, category_id}];
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    setCart(newCart);
+  }
   return (
     <article className={styles.device_article} onClick={handleClick}>
         <img className={styles.device_image} src={url} alt="Device image." />
         <h3 className={styles.device_title}>{`${name} ${model}`}</h3>
         <div className={styles.price_div}>
           <p className={styles.price}>{price}€</p>
-          <button className={styles.button_icon}><FontAwesomeIcon className={styles.cart} icon={faCartShopping}></FontAwesomeIcon></button>
+          <button onClick={e => handleButtonClick(e)} className={styles.button_icon}><FontAwesomeIcon className={styles.cart} icon={faCartShopping}></FontAwesomeIcon></button>
         </div>
     </article>
   )
