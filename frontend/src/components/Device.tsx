@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styles from "../css/Device.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { DevicesContext } from '../context/DevicesContext';
+import { DevicesContext, IDevice } from '../context/DevicesContext';
 import { useNavigate } from 'react-router-dom';
 
 interface DeviceProps{
@@ -32,9 +32,21 @@ const Device = ({id, name, category_id , model, description, url, price} : Devic
   }
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    const newCart = [...cart, {id, name, model, description, url, price, category_id}];
+    const newCart = setNewCart([])
     localStorage.setItem("cart", JSON.stringify(newCart));
     setCart(newCart);
+  }
+  function setNewCart(newCart: IDevice[]){
+    const item = {id, name, model, description, url, price, category_id, quantity: 1};
+    const index = cart.findIndex(device => device.id === item.id);
+    if(index !== -1){
+      ++cart[index].quantity!;
+      newCart = [...cart.slice(0, index), ...cart.slice(index)];
+    }
+    else{
+      newCart = [...cart, item];
+    }
+    return newCart;
   }
   return (
     <article className={styles.device_article} onClick={handleClick}>

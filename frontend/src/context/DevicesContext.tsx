@@ -7,7 +7,8 @@ export interface IDevice{
   description: string,
   url: string,
   price: string,
-  category_id: number
+  category_id: number,
+  quantity?: number
 }
 
 export type DevicesContextType = {
