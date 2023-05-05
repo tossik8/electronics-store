@@ -32,7 +32,7 @@ const Device = ({id, name, category_id , model, description, url, price} : Devic
   }
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    const newCart = setNewCart([])
+    const newCart = setNewCart([]);
     localStorage.setItem("cart", JSON.stringify(newCart));
     setCart(newCart);
   }

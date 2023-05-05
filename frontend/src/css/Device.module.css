@@ -39,10 +39,13 @@
     color: var(--brand-color);
     transition: all 0.2s ease-in-out;
 }
-.button_icon:focus, .button_icon:hover{
+.button_icon:hover, .button_icon:focus-visible{
     outline: none;
     filter: brightness(140%);
     transform: scale(105%);
+}
+.button_icon:active{
+    filter:hue-rotate(180deg);
 }
 .cart{
     font-size: 1.5rem;
