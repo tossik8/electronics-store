@@ -17,7 +17,7 @@ const Navigation = ({source, title, height} : NavigationProps) => {
   const [input, setInput] = useState<string>("");
   let navigation = useNavigate();
   let location = useLocation();
-  const { setDevices } = useContext(DevicesContext);
+  const { setDevices, cart } = useContext(DevicesContext);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries, observer) => {
@@ -70,7 +70,10 @@ const Navigation = ({source, title, height} : NavigationProps) => {
           <button type="button" className={`${styles.button_icon} ${styles.delete}`} onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
         </form>
         <div className={styles.icons}>
-          <button type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping}/></button>
+          <div className={styles.cart_div}>
+            <button type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping}/></button>
+            <div className={styles.item_counter}>{cart.reduce((accumulator, device) => accumulator + device.quantity!, 0)}</div>
+          </div>
           <button type="button" className={`${styles.button_icon} ${styles.profile}`}><FontAwesomeIcon icon={faUser} /></button>
         </div>
       </nav>

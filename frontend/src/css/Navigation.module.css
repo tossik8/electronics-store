@@ -85,6 +85,20 @@
     display: flex;
     gap: 1rem;
 }
+.cart_div{
+    position: relative;
+}
+.item_counter{
+    position: absolute;
+    text-align: center;
+    font-size: 0.8rem;
+    background-color: orange;
+    border-radius: 4rem;
+    width: min-content;
+    min-width: 1rem;
+    right: -0.2rem;
+    top: -0.8rem;
+}
 .cart, .profile{
     font-size: 1.5rem;
 }
