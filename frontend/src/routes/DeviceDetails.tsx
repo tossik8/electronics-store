@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Navigation from '../components/Navigation'
 import { useParams } from 'react-router-dom'
 import styles from "../css/DeviceDetails.module.css"
