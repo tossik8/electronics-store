@@ -17,7 +17,7 @@ interface DeviceProps{
 
 const Device = ({id, name, category_id , model, description, url, price} : DeviceProps) => {
   const navigate = useNavigate();
-  const { setSelectedDevice, setCart, cart } = useContext(DevicesContext);
+  const { setSelectedDevice, cart, setCart } = useContext(DevicesContext);
   const handleClick = () => {
     setSelectedDevice({
       id,
@@ -36,18 +36,29 @@ const Device = ({id, name, category_id , model, description, url, price} : Devic
     localStorage.setItem("cart", JSON.stringify(newCart));
     setCart(newCart);
   }
+
   function setNewCart(newCart: IDevice[]){
-    const item = {id, name, model, description, url, price, category_id, quantity: 1};
+    const item = {
+        id,
+        name,
+        model,
+        description,
+        url,
+        price,
+        category_id,
+        quantity: 1
+    };
     const index = cart.findIndex(device => device.id === item.id);
     if(index !== -1){
       ++cart[index].quantity!;
-      newCart = [...cart.slice(0, index), ...cart.slice(index)];
+      newCart = [...cart];
     }
     else{
       newCart = [...cart, item];
     }
     return newCart;
   }
+
   return (
     <article className={styles.device_article} onClick={handleClick}>
         <img className={styles.device_image} src={url} alt="Device image." />

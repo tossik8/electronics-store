@@ -1,10 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from "../css/QuantityInput.module.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 
-const QuantityInput = () => {
-    const [ quantity, setQuantity ] = useState(1);
+interface QuantityInputProps{
+  quantity: number,
+  setQuantity: (quantity: number) => void
+}
+
+const QuantityInput = ({quantity, setQuantity} : QuantityInputProps) => {
 
   return (
     <div className={styles.quantity_div}>

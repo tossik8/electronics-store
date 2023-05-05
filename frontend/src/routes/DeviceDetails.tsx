@@ -1,14 +1,15 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navigation from '../components/Navigation'
 import { useParams } from 'react-router-dom'
 import styles from "../css/DeviceDetails.module.css"
-import { DevicesContext } from '../context/DevicesContext'
+import { DevicesContext, IDevice } from '../context/DevicesContext'
 import DeviceFinder from '../apis/DeviceFinder'
 import QuantityInput from '../components/QuantityInput'
 
 const DeviceDetails = () => {
     const { name } = useParams();
-    const { selectedDevice, setSelectedDevice } = useContext(DevicesContext);
+    const { selectedDevice, setSelectedDevice, cart, setCart } = useContext(DevicesContext);
+    const [ quantity, setQuantity ] = useState(1);
 
     useEffect(() => {
         async function fetchData() {
@@ -20,7 +21,35 @@ const DeviceDetails = () => {
             }
         }
         fetchData();
-    }, [])
+    }, []);
+
+    const handleClick = () => {
+        const newCart = setNewCart([], quantity);
+        localStorage.setItem("cart", JSON.stringify(newCart));
+        setCart(newCart);
+    }
+    function setNewCart(newCart: IDevice[], quantity: number){
+        const item = {
+            id: selectedDevice.id,
+            name: selectedDevice.name,
+            model: selectedDevice.model,
+            description: selectedDevice.description,
+            url: selectedDevice.url,
+            price: selectedDevice.price,
+            category_id: selectedDevice.category_id,
+            quantity
+        };
+        const index = cart.findIndex(device => device.id === item.id);
+        if(index !== -1){
+          cart[index].quantity! += quantity;
+          newCart = [...cart];
+        }
+        else{
+          newCart = [...cart, item];
+        }
+        return newCart;
+      }
+
   return (
     <>{
         selectedDevice ? <>
@@ -32,8 +61,8 @@ const DeviceDetails = () => {
                             <p id={styles.description}>{selectedDevice.description}</p>
                             <p id={styles.price}>{selectedDevice.price}€</p>
                             <div className={styles.controls_div}>
-                                <button className={styles.cart_button}>Add to cart</button>
-                                <QuantityInput/>
+                                <button onClick={handleClick} className={styles.cart_button}>Add to cart</button>
+                                <QuantityInput quantity={quantity} setQuantity={setQuantity}/>
                             </div>
                         </div>
                         <img id={styles.device_image} src={selectedDevice.url} alt="Device image."/>
