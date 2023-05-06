@@ -32,11 +32,13 @@ const Cart = () => {
               <div key={device.id}>
                 <article className={styles.cart_article}>
                   <img onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_image} src={device.url} alt="Device image."/>
-                  <div onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_info}>
-                    <p className={styles.device_title}>{device.name} {device.model}</p>
-                    <p className={styles.device_price}>Price: {device.price}€</p>
-                    <p className={styles.device_quantity}>Quantity: {device.quantity}</p>
-                    <p className={styles.item_total}>Total: {(+device.price * device.quantity!).toFixed(2)}€</p>
+                  <div className={styles.device_info}>
+                    <div onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_details}>
+                      <p className={styles.device_title}>{device.name} {device.model}</p>
+                      <p className={styles.device_price}>Price: {device.price}€</p>
+                      <p className={styles.device_quantity}>Quantity: {device.quantity}</p>
+                      <p className={styles.item_total}>Total: {(+device.price * device.quantity!).toFixed(2)}€</p>
+                    </div>
                     <button onClick={(e) => handleDelete(e, device.id)} className={styles.delete}><FontAwesomeIcon className={styles.trash} icon={faTrash}/>Delete</button>
                   </div>
                 </article>

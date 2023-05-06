@@ -8,6 +8,7 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    gap: 4%;
 }
 .cart_title{
     text-align: center;
@@ -31,10 +32,18 @@
     transition: all 0.2s ease-in-out;
 }
 .device_image:hover{
-    transform: skewX(-2deg) scale(105%);
+    transform: scale(105%);
+    box-shadow: 10px 5px 10px #94b6c5;
 }
 .device_info{
+    width: 100%;
     margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.device_details{
     cursor: pointer;
 }
 .device_title{
@@ -44,6 +53,7 @@
 .delete{
     background-color: #d03232;
     padding: 0.4rem 0.6rem;
+    max-height: 2rem;
     border-radius: 1rem;
     outline: none;
     border: none;
@@ -56,11 +66,10 @@
 
 .delete:hover, .delete:focus-visible{
     filter: brightness(110%);
-    color:rgb(243, 234, 234)
+    color:rgb(243, 234, 234);
 }
 .delete:active{
-    background-color: rgb(212, 184, 184);
-    filter: brightness(110%);
+    background-color: rgb(243, 234, 234);
     color: #d03232;
 }
 .trash{
