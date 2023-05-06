@@ -49,7 +49,7 @@ const Cart = () => {
           </section>
           <div className={styles.order}>
             <p className={styles.total}>Total price: {cart.reduce((sum, device) => sum + (device.quantity! * +device.price), 0).toFixed(2)}€</p>
-            <button>Proceed to checkout</button>
+            <button className={styles.checkout_button}>Proceed to checkout</button>
           </div>
         </div>
       </main>

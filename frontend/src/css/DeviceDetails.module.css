@@ -36,14 +36,14 @@
     border-radius: 2rem;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+    outline: none;
 }
 
 .cart_button:hover, .cart_button:focus-visible{
     background-color: transparent;
 }
 .cart_button:hover, .cart_button:focus-visible, .cart_button:active{
-    outline: none;
-    border: 2px solid black;
+    border-color: black;
     color: white;
 }
 .cart_button:active{
