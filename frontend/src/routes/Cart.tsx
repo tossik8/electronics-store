@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import Navigation from '../components/Navigation'
 
 const Cart = () => {
+  window.scrollTo(0, 0);
   const  { cart, setCart } = useContext(DevicesContext);
   const navigation = useNavigate();
 
