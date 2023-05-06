@@ -22,9 +22,9 @@ body{
 }
 ::-webkit-scrollbar{
   width: 0.8rem;
-  background: #4f6085;
+  background: rgb(25, 88, 133);
 }
 ::-webkit-scrollbar-thumb{
-  background: #7ba0ef;
+  background: var(--brand-color);
   border-radius: 2rem;
 }
