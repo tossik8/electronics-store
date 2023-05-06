@@ -14,11 +14,18 @@ const Cart = () => {
     navigation(`/item/${name}`);
   }
 
+  const handleDelete = (e: React.MouseEvent, id: number) => {
+    e.stopPropagation();
+    const newCart = cart.filter(device => device.id !== id);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    setCart([...newCart]);
+  }
+
   return (
     <>
       <Navigation height={true}/>
       <main id={styles.cart_main}>
-        <h1>Cart</h1>
+        <h1 className={styles.cart_title}>Cart</h1>
         <div className={styles.panel}>
           <section className={styles.cart_section}>
             {cart.map(device => (
@@ -29,8 +36,8 @@ const Cart = () => {
                     <p className={styles.device_title}>{device.name} {device.model}</p>
                     <p className={styles.device_price}>Price: {device.price}€</p>
                     <p className={styles.device_quantity}>Quantity: {device.quantity}</p>
-                    <p className={styles.item_total}>Total: {+device.price * device.quantity!}€</p>
-                    <button className={styles.delete}><FontAwesomeIcon className={styles.trash} icon={faTrash}/>Delete</button>
+                    <p className={styles.item_total}>Total: {(+device.price * device.quantity!).toFixed(2)}€</p>
+                    <button onClick={(e) => handleDelete(e, device.id)} className={styles.delete}><FontAwesomeIcon className={styles.trash} icon={faTrash}/>Delete</button>
                   </div>
                 </article>
                 <div className={styles.divider}/>
@@ -38,7 +45,7 @@ const Cart = () => {
             ))}
           </section>
           <div className={styles.order}>
-            <p className={styles.total}>Total price: {cart.reduce((sum, device) => sum + (device.quantity! * +device.price), 0)}€</p>
+            <p className={styles.total}>Total price: {cart.reduce((sum, device) => sum + (device.quantity! * +device.price), 0).toFixed(2)}€</p>
             <button>Proceed to checkout</button>
           </div>
         </div>
