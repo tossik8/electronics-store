@@ -71,7 +71,7 @@ const Navigation = ({source, title, height} : NavigationProps) => {
         </form>
         <div className={styles.icons}>
           <div className={styles.cart_div}>
-            <button type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping}/></button>
+            <button onClick={() => navigation("/cart")} type="button" className={`${styles.button_icon} ${styles.cart}`}><FontAwesomeIcon icon={faCartShopping}/></button>
             <div className={styles.item_counter}>{cart.reduce((accumulator, device) => accumulator + device.quantity!, 0)}</div>
           </div>
           <button type="button" className={`${styles.button_icon} ${styles.profile}`}><FontAwesomeIcon icon={faUser} /></button>
