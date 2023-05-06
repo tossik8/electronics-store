@@ -1,12 +1,18 @@
 import React, { useContext } from 'react'
 import styles from "../css/Cart.module.css"
-import Navigation from '../components/Navigation'
 import { DevicesContext } from '../context/DevicesContext'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
+import Navigation from '../components/Navigation'
 
 const Cart = () => {
   const  { cart, setCart } = useContext(DevicesContext);
+  const navigation = useNavigate();
+
+  const handleClick = (name: string) => {
+    navigation(`/item/${name}`);
+  }
 
   return (
     <>
@@ -18,8 +24,8 @@ const Cart = () => {
             {cart.map(device => (
               <div key={device.id}>
                 <article className={styles.cart_article}>
-                  <img className={styles.device_image} src={device.url} alt="Device image."/>
-                  <div className={styles.device_info}>
+                  <img onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_image} src={device.url} alt="Device image."/>
+                  <div onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_info}>
                     <p className={styles.device_title}>{device.name} {device.model}</p>
                     <p className={styles.device_price}>Price: {device.price}€</p>
                     <p className={styles.device_quantity}>Quantity: {device.quantity}</p>
