@@ -20,3 +20,11 @@ body{
   flex-direction: column;
   align-items: center;
 }
+::-webkit-scrollbar{
+  width: 0.8rem;
+  background: #4f6085;
+}
+::-webkit-scrollbar-thumb{
+  background: #7ba0ef;
+  border-radius: 2rem;
+}
