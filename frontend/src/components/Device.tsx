@@ -61,7 +61,7 @@ const Device = ({id, name, category_id , model, description, url, price} : Devic
 
   return (
     <article className={styles.device_article} onClick={handleClick}>
-        <img className={styles.device_image} src={url} alt="Device image." />
+        <img loading='lazy' className={styles.device_image} src={url} alt="Device image." />
         <h3 className={styles.device_title}>{`${name} ${model}`}</h3>
         <div className={styles.price_div}>
           <p className={styles.price}>{price}€</p>

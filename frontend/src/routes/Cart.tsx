@@ -32,7 +32,7 @@ const Cart = () => {
             {cart.map(device => (
               <div key={device.id}>
                 <article className={styles.cart_article}>
-                  <img onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_image} src={device.url} alt="Device image."/>
+                  <img loading='lazy' onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_image} src={device.url} alt="Device image."/>
                   <div className={styles.device_info}>
                     <div onClick={() => handleClick(device.name + " " + device.model)} className={styles.device_details}>
                       <p className={styles.device_title}>{device.name} {device.model}</p>
