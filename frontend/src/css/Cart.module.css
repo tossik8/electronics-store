@@ -1,7 +1,7 @@
 #cart_main{
     margin-top: 8rem;
     max-width: 100rem;
-    width: 100vw;
+    width: 100%;
 }
 .cart_article{
     display: flex;

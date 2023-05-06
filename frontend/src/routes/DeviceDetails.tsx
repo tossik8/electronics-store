@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import styles from "../css/DeviceDetails.module.css"
 import { DevicesContext, IDevice } from '../context/DevicesContext'
 import DeviceFinder from '../apis/DeviceFinder'
-import QuantityInput from '../components/QuantityInput'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 
 const DeviceDetails = () => {
     const { name } = useParams();
@@ -54,20 +55,24 @@ const DeviceDetails = () => {
     <>{
         selectedDevice ? <>
             <Navigation height={true}/>
-                <main id={styles.device_main}>
-                    <div className={styles.panel}>
-                        <div id={styles.device_details}>
-                            <h1 id={styles.device_title}>{name}</h1>
-                            <p id={styles.description}>{selectedDevice.description}</p>
-                            <p id={styles.price}>{selectedDevice.price}€</p>
-                            <div className={styles.controls_div}>
-                                <button onClick={handleClick} className={styles.cart_button}>Add to cart</button>
-                                <QuantityInput quantity={quantity} setQuantity={setQuantity}/>
+            <main id={styles.device_main}>
+                <div className={styles.panel}>
+                    <div id={styles.device_details}>
+                        <h1 id={styles.device_title}>{name}</h1>
+                        <p id={styles.description}>{selectedDevice.description}</p>
+                        <p id={styles.price}>{selectedDevice.price}€</p>
+                        <div className={styles.controls_div}>
+                            <button onClick={handleClick} className={styles.cart_button}>Add to cart</button>
+                            <div className={styles.quantity_div}>
+                                <button onClick={() => quantity >= 2 ? setQuantity(quantity - 1) : null} className={`${styles.quantity_button} ${styles.left}`}><FontAwesomeIcon icon={faMinus}/></button>
+                                <input className={styles.quantity_input} readOnly type="text" onChange={e => setQuantity(+e.target.value)} value={quantity}/>
+                                <button onClick={() => setQuantity(quantity + 1)} className={`${styles.quantity_button} ${styles.right}`}><FontAwesomeIcon icon={faPlus}/></button>
                             </div>
                         </div>
-                        <img id={styles.device_image} src={selectedDevice.url} alt="Device image."/>
                     </div>
-                </main>
+                    <img id={styles.device_image} src={selectedDevice.url} alt="Device image."/>
+                </div>
+            </main>
         </> : null
     }</>
   )
