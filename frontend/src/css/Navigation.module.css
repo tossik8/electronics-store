@@ -70,7 +70,7 @@
     height: 2rem;
     padding: 0 2rem;
     font-size: 1.1rem;
-    border:var(--brand-color) 1px solid;
+    border: 1px solid var(--brand-color);
     border-radius: 0.3rem;
     min-width: 6rem;
     caret-color: var(--brand-color);

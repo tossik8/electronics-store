@@ -1,5 +1,5 @@
 #cart_main{
-    margin-top: 7rem;
+    margin: 7rem 0 5rem;
     max-width: 100rem;
     width: 100%;
 }
@@ -100,6 +100,7 @@
     border-radius: 2rem;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
+    margin-top: 0.5rem;
 }
 .checkout_button:hover, .checkout_button:focus-visible{
     background-color: transparent;
@@ -110,4 +111,30 @@
 }
 .checkout_button:active{
     background-color: black;
+}
+@media screen and (max-width: 760px) {
+    .panel, .cart_article{
+        flex-direction: column;
+    }
+    .cart_section, .order{
+        margin: 0 auto;
+    }
+    .order{
+        min-width: initial;
+        position: static;
+        text-align: center;
+    }
+}
+@media screen and (max-width: 360px){
+    .device_image, .divider{
+        width: 100%;
+    }
+    .total{
+        font-size: 1.5rem;
+    }
+}
+@media screen and (max-width: 285px){
+    .checkout_button{
+        font-size: 1rem;
+    }
 }
