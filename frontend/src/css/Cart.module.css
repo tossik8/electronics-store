@@ -1,0 +1,8 @@
+#cart_main{
+    margin-top: 8rem;
+    max-width: 100rem;
+    width: 100vw;
+}
+.cart_article{
+    display: flex;
+}
