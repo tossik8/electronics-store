@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import Navigation from '../components/Navigation';
 import SoundButton from '../components/SoundButton';
@@ -7,6 +7,10 @@ import DevicesList from '../components/DevicesList';
 import DeviceFinder from '../apis/DeviceFinder';
 
 const CategoryPage = () => {
+    const loadCounter = useRef(1);
+    if(loadCounter.current === 1){
+        window.scrollTo(0, 0);
+    }
     const { category } = useParams();
     const { setDevices } = useContext(DevicesContext);
     useEffect(() => {
@@ -19,6 +23,7 @@ const CategoryPage = () => {
             }
         }
         fetchData();
+        ++loadCounter.current;
     }, [])
     let source = "";
     if(category === "Phones"){
