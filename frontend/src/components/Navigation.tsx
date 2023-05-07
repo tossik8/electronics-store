@@ -36,9 +36,6 @@ const Navigation = ({source, title, height} : NavigationProps) => {
     if(document.getElementById(styles.background_video)){
       observer.observe(document.getElementById(styles.background_video) as HTMLVideoElement);
     }
-    if(height){
-        document.getElementById(styles.navigation_section)?.classList.add(styles.adjusted_height);
-    }
   }, []);
 
   const handleSearch = () => {
@@ -59,9 +56,8 @@ const Navigation = ({source, title, height} : NavigationProps) => {
       console.error(e);
     }
   }
-
   return (
-    <header id={styles.navigation_section}>
+    <header id={styles.navigation_section} className={height? styles.adjusted_height : undefined}>
       <nav className={styles.navigation_panel}>
         <img id={styles.logo} src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
         <form onSubmit={e => e.preventDefault()} className={styles.search_bar_form}>
