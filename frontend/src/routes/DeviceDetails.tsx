@@ -61,7 +61,7 @@ const DeviceDetails = () => {
                         <h1 id={styles.device_title}>{name}</h1>
                         <p id={styles.description}>{selectedDevice.description}</p>
                         <p id={styles.price}>{selectedDevice.price}€</p>
-                        <div className={styles.controls_div}>
+                        <div className={styles.flex_div}>
                             <button onClick={handleClick} className={styles.cart_button}>Add to cart</button>
                             <div className={styles.quantity_div}>
                                 <button onClick={() => quantity >= 2 ? setQuantity(quantity - 1) : null} className={`${styles.quantity_button} ${styles.left}`}><FontAwesomeIcon icon={faMinus}/></button>

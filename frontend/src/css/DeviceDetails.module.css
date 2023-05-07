@@ -21,7 +21,7 @@
     color: #fdff46;
     margin: 1rem 0;
 }
-.controls_div{
+.flex_div{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
