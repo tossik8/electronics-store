@@ -12,10 +12,12 @@ interface DeviceProps{
     description: string,
     url: string,
     price: string,
-    category_id: number
+    category_id: number,
+    isVisible: boolean,
+    setIsVisible: (isVisible: boolean) => void
 }
 
-const Device = ({id, name, category_id , model, description, url, price} : DeviceProps) => {
+const Device = ({id, name, category_id , model, description, url, price, isVisible, setIsVisible} : DeviceProps) => {
   const navigate = useNavigate();
   const { setSelectedDevice, cart, setCart } = useContext(DevicesContext);
   const handleClick = () => {
@@ -32,6 +34,12 @@ const Device = ({id, name, category_id , model, description, url, price} : Devic
   }
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
+    if(!isVisible){
+      setIsVisible(true);
+      setTimeout(() => {
+          setIsVisible(false);
+      }, 1950);
+    }
     const newCart = setNewCart([]);
     localStorage.setItem("cart", JSON.stringify(newCart));
     setCart(newCart);

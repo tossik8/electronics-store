@@ -1,0 +1,30 @@
+.alert_box{
+    background-color: #041e1a;
+    padding: 1rem;
+    color: white;
+    border-radius: 1rem;
+    position: fixed;
+    top: 5rem;
+    animation: appear 2s ease-in-out;
+    -o-animation: appear 2s ease-in-out;
+    -moz-animation: appear 2s ease-in-out;
+    -webkit-animation: appear 2s ease-in-out;
+}
+@keyframes appear{
+    0%{
+        opacity: 0;
+        transform: translate(-200px);
+    }
+    25%{
+        opacity: 0.9;
+        transform: translate(0);
+    }
+    75%{
+        opacity: 0.9;
+        transform: translate(0);
+    }
+    100%{
+        opacity: 0;
+        transform: translate(200px);
+    }
+}

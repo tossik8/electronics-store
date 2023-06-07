@@ -6,13 +6,17 @@ import { DevicesContext, IDevice } from '../context/DevicesContext'
 import DeviceFinder from '../apis/DeviceFinder'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
+import AlertBox from '../components/AlertBox'
+
 
 const DeviceDetails = () => {
     const { name } = useParams();
     const { selectedDevice, setSelectedDevice, cart, setCart } = useContext(DevicesContext);
     const [ quantity, setQuantity ] = useState(1);
+    const [ isVisible, setIsVisible ] = useState(false);
 
     useEffect(() => {
+        window.scrollTo(0,0);
         async function fetchData() {
             try{
                 const device = await DeviceFinder(`/device/${name}`);
@@ -25,6 +29,12 @@ const DeviceDetails = () => {
     }, []);
 
     const handleClick = () => {
+        if(!isVisible){
+            setIsVisible(true);
+            setTimeout(() => {
+                setIsVisible(false);
+            }, 1950);
+        }
         const newCart = setNewCart([], quantity);
         localStorage.setItem("cart", JSON.stringify(newCart));
         setCart(newCart);
@@ -54,6 +64,7 @@ const DeviceDetails = () => {
   return (
     <>{
         selectedDevice ? <>
+            {isVisible? <AlertBox/>: null}
             <Navigation height={true}/>
             <main id={styles.device_main}>
                 <div className={styles.panel}>
