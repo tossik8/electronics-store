@@ -26,6 +26,7 @@
 .device_image{
     background-color: white;
     width: 200px;
+    object-fit: contain;
     padding: 1rem;
     border-radius: 0 1rem;
     cursor: pointer;
@@ -112,7 +113,7 @@
 .checkout_button:active{
     background-color: black;
 }
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 815px) {
     .panel, .cart_article{
         flex-direction: column;
     }
