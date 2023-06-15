@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import styles from "../css/Device.module.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { DevicesContext, IDevice } from '../context/DevicesContext';
 import { useNavigate } from 'react-router-dom';
+import alertBoxStyles from "../css/AlertBox.module.css"
 
 interface DeviceProps{
     id: number,
@@ -12,14 +13,13 @@ interface DeviceProps{
     description: string,
     url: string,
     price: string,
-    category_id: number,
-    isVisible: boolean,
-    setIsVisible: (isVisible: boolean) => void
+    category_id: number
 }
 
-const Device = ({id, name, category_id , model, description, url, price, isVisible, setIsVisible} : DeviceProps) => {
+const Device = ({id, name, category_id , model, description, url, price} : DeviceProps) => {
   const navigate = useNavigate();
   const { setSelectedDevice, cart, setCart } = useContext(DevicesContext);
+  const timeout = useRef<number>(null!);
   const handleClick = () => {
     setSelectedDevice({
       id,
@@ -32,14 +32,19 @@ const Device = ({id, name, category_id , model, description, url, price, isVisib
     });
     navigate(`/item/${name} ${model}`);
   }
+  const animateAlertBox = () => {
+    const alertBox = document.getElementById("alert-box");
+    clearTimeout(timeout.current);
+    alertBox!.className = alertBoxStyles.invisible;
+    void alertBox?.offsetWidth;
+    alertBox!.className = alertBoxStyles.alert_box + " " + alertBoxStyles.visible;
+    timeout.current = setTimeout(() => {
+      alertBox!.className = alertBoxStyles.invisible;
+    }, 1950);
+  }
   const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    if(!isVisible){
-      setIsVisible(true);
-      setTimeout(() => {
-          setIsVisible(false);
-      }, 1950);
-    }
+    animateAlertBox();
     const newCart = setNewCart([]);
     localStorage.setItem("cart", JSON.stringify(newCart));
     setCart(newCart);

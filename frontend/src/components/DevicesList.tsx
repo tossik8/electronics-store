@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import Device from './Device'
 import { DevicesContext } from '../context/DevicesContext'
 import styles from "../css/DevicesList.module.css"
@@ -10,15 +10,14 @@ interface DevicesListProps{
 
 const DevicesList = ({title} : DevicesListProps) => {
   const { devices } = useContext(DevicesContext);
-  const [ isVisible, setIsVisible] = useState(false);
   return (
     <>
-      {isVisible? <AlertBox/> : null }
+      <AlertBox/>
       <main id={styles.devices}>
         <h1 id={styles.category_title}>{title}</h1>
         <div className={styles.devices_wrapper}>
             {devices.map(device => (
-                <Device key={device.id} id={device.id} name={device.name} model={device.model} url={device.url} price={device.price} description={device.description} category_id={device.category_id} isVisible={isVisible} setIsVisible={setIsVisible}/>
+                <Device key={device.id} id={device.id} name={device.name} model={device.model} url={device.url} price={device.price} description={device.description} category_id={device.category_id}/>
             ))}
         </div>
       </main>

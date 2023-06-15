@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Navigation from '../components/Navigation'
 import { useParams } from 'react-router-dom'
 import styles from "../css/DeviceDetails.module.css"
@@ -7,14 +7,14 @@ import DeviceFinder from '../apis/DeviceFinder'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons'
 import AlertBox from '../components/AlertBox'
+import alertBoxStyles from "../css/AlertBox.module.css"
 
 
 const DeviceDetails = () => {
     const { name } = useParams();
     const { selectedDevice, setSelectedDevice, cart, setCart } = useContext(DevicesContext);
     const [ quantity, setQuantity ] = useState(1);
-    const [ isVisible, setIsVisible ] = useState(false);
-
+    const timeout = useRef<number>(null!);
     useEffect(() => {
         window.scrollTo(0,0);
         async function fetchData() {
@@ -22,19 +22,24 @@ const DeviceDetails = () => {
                 const device = await DeviceFinder(`/device/${name}`);
                 setSelectedDevice(device.data.data[0]);
             } catch(e) {
-                console.error(e)
+                console.error(e);
             }
         }
         fetchData();
     }, []);
+    const animateAlertBox = () => {
+        const alertBox = document.getElementById("alert-box");
+        clearTimeout(timeout.current);
+        alertBox!.className = alertBoxStyles.invisible;
+        void alertBox?.offsetWidth;
+        alertBox!.className = alertBoxStyles.alert_box + " " + alertBoxStyles.visible;
+        timeout.current = setTimeout(() => {
+          alertBox!.className = alertBoxStyles.invisible;
+        }, 1950);
+    }
 
     const handleClick = () => {
-        if(!isVisible){
-            setIsVisible(true);
-            setTimeout(() => {
-                setIsVisible(false);
-            }, 1950);
-        }
+        animateAlertBox();
         const newCart = setNewCart([], quantity);
         localStorage.setItem("cart", JSON.stringify(newCart));
         setCart(newCart);
@@ -64,7 +69,7 @@ const DeviceDetails = () => {
   return (
     <>{
         selectedDevice ? <>
-            {isVisible? <AlertBox/>: null}
+            <AlertBox/>
             <Navigation height={true}/>
             <main id={styles.device_main}>
                 <div className={styles.panel}>
