@@ -6,7 +6,7 @@ import DevicesPage from "./routes/DevicesPage";
 import DeviceDetails from "./routes/DeviceDetails";
 import Cart from "./routes/Cart";
 import CheckoutPage from "./routes/CheckoutPage";
-import Thankyou from "./routes/ThankYou"
+import Thankyou from "./routes/ThankyouPage"
 function App() {
 
   return (
