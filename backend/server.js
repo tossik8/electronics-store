@@ -3,6 +3,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const db = require("./db");
+// Import the required dependencies
+
+
+const bodyParser = require("body-parser");
+
+// Use the body-parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors());
 const port = process.env.PORT || 3000;
@@ -52,7 +60,7 @@ app.get("/api/v1/electronics-store/:category", async (req, res) => {
         console.error(e)
     }
 })
-
+// this code sets up a route that accepts a device name as a parameter in the URL. It queries the database for the device information based on the provided name, retrieves the price asynchronously,
 app.get("/api/v1/electronics-store/device/:name", async (req, res) => {
     try{
         let device = await db.query("SELECT * FROM device WHERE name || ' ' || model = $1", [req.params.name]);
@@ -76,6 +84,33 @@ function getPrice(devices){
     }));
 }
 
-app.listen(port, () => {
+
+
+
+app.post("/api/v1/electronics-store/users", async (req, res) => {
+    console.log(req.body);
+  
+    try {
+      const results = await db.query(
+        "INSERT INTO users (username, email, password, address) values ($1, $2, $3, $4) returning *",
+        [req.body.username, req.body.email, req.body.password,req.body.address]
+      );
+      console.log(results);
+      res.status(201).json({
+        status: "success",
+        data: {
+          user: results.rows[0],
+        },
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({
+        status: "error",
+        message: "An error occurred while creating the user.",
+      });
+    }
+  });
+  
+  app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 })
