@@ -13,13 +13,13 @@ interface DeviceProps{
     description: string,
     url: string,
     price: string,
-    category_id: number
+    category_id: number,
+    timeout: React.MutableRefObject<number>
 }
 
-const Device = ({id, name, category_id , model, description, url, price} : DeviceProps) => {
+const Device = ({id, name, category_id , model, description, url, price, timeout} : DeviceProps) => {
   const navigate = useNavigate();
   const { setSelectedDevice, cart, setCart } = useContext(DevicesContext);
-  const timeout = useRef<number>(null!);
   const handleClick = () => {
     setSelectedDevice({
       id,
