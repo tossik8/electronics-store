@@ -37,7 +37,7 @@ app.get("/api/v1/electronics-store", async (req, res) => {
     }
 });
 
-app.get("/api/v1/electronics-store/:category", async (req, res) => {
+app.get("/api/v1/electronics-store/category/:category", async (req, res) => {
     try{
         let devices = await db.query("SELECT * FROM device WHERE category_id = (SELECT id FROM category WHERE name = $1)", [req.params.category]);
         getPrice(devices).then(devices => {
