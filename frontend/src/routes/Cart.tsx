@@ -1,26 +1,32 @@
-import React, { useContext } from 'react'
-import styles from "../css/Cart.module.css"
-import { DevicesContext } from '../context/DevicesContext'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { useNavigate } from 'react-router-dom'
-import Navigation from '../components/Navigation'
+// Cart.js
+import React, { useContext } from 'react';
+import styles from "../css/Cart.module.css";
+import { DevicesContext } from '../context/DevicesContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
+import Navigation from '../components/Navigation';
 
 const Cart = () => {
   window.scrollTo(0, 0);
-  const  { cart, setCart } = useContext(DevicesContext);
+  const { cart, setCart } = useContext(DevicesContext);
   const navigation = useNavigate();
 
   const handleClick = (name: string) => {
     navigation(`/item/${name}`);
-  }
+  };
 
   const handleDelete = (e: React.MouseEvent, id: number) => {
     e.stopPropagation();
     const newCart = cart.filter(device => device.id !== id);
     localStorage.setItem("cart", JSON.stringify(newCart));
     setCart([...newCart]);
-  }
+  };
+
+  const handleCheckout = () => {
+    navigation('/checkout', { state: { cart } }); // Separate the pathname and state
+  };
+  
 
   return (
     <>
@@ -49,12 +55,12 @@ const Cart = () => {
           </section>
           <div className={styles.order}>
             <p className={styles.total}>Total price: {cart.reduce((sum, device) => sum + (device.quantity! * +device.price), 0).toFixed(2)}€</p>
-            <button className={styles.checkout_button}>Proceed to checkout</button>
+            <button onClick={handleCheckout} className={styles.checkout_button}>Proceed to checkout</button>
           </div>
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
