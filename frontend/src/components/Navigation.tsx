@@ -62,7 +62,7 @@ const Navigation = ({source, title, height} : NavigationProps) => {
         <img id={styles.logo} src="/star-tech-logo.png" alt="Logo." onClick={() => navigation("/")}/>
         <form onSubmit={e => e.preventDefault()} className={styles.search_form}>
           <button type="button" className={`${styles.button_icon} ${styles.search}`} onClick={handleSearch}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
-          <input className={styles.search_bar} placeholder="Item name" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
+          <input id="search-bar" className={styles.search_bar} placeholder="Item name" type="text" onKeyUp={e => e.key === "Enter" ? handleSearch() : null} onChange={e => setInput(e.target.value)} value={input}/>
           <button type="button" className={`${styles.button_icon} ${styles.delete}`} onClick={() => setInput("")} ><FontAwesomeIcon icon={faXmark} /></button>
         </form>
         <div className={styles.icons}>

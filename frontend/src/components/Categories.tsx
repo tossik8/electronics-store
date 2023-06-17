@@ -7,7 +7,7 @@ const Categories = () => {
   let navigation = useNavigate();
 
   const handleClick = (category: string) => {
-    navigation(`/${category}`);
+    navigation(`/category/${category}`);
   }
 
   return (

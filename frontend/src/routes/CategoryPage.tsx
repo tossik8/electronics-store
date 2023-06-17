@@ -16,7 +16,7 @@ const CategoryPage = () => {
     useEffect(() => {
         async function fetchData() {
             try{
-                const devices = await DeviceFinder(`/${category}`);
+                const devices = await DeviceFinder(`/category/${category}`);
                 setDevices(devices.data.data);
             } catch(e){
                 console.error(e);
