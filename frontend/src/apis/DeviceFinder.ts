@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "http://localhost:3000/api/v1/electronics-store"
+    baseURL: "https://electronics-store-server-k1rd.onrender.com/api/v1/electronics-store"
 })
