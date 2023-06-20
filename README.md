@@ -1,4 +1,4 @@
 # Electronics Store
 
-Run server by executing cd \backend, nodemon server.js in the backend directory
-Run frontend by executing npm run dev in the frontend directory
+- Run the server by executing "npm start" in the backend directory
+- Run the frontend by executing "npm run dev" in the frontend directory
